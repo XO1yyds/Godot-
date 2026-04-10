@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://b1hhfyfbnsjvb"]
+
+[ext_resource type="Script" uid="uid://bph1fb1ykuk35" path="res://Scripts/main_game.gd" id="1_7s6yn"]
+[ext_resource type="PackedScene" uid="uid://diycnmhy1wrce" path="res://Template/Paddle.tscn" id="1_b15f2"]
+[ext_resource type="PackedScene" uid="uid://de2tux3hqc82u" path="res://Template/Ball.tscn" id="1_yhwlx"]
+[ext_resource type="Script" uid="uid://df384petjci35" path="res://Scripts/BallDie.gd" id="3_4de3i"]
+[ext_resource type="Script" uid="uid://dcbgc5v2n5wce" path="res://Scripts/BornBricks.gd" id="3_a6li8"]
+[ext_resource type="PackedScene" uid="uid://b1vfkefxcsj0f" path="res://Template/Brick.tscn" id="4_gj2i1"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_2h3om"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_yhwlx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a6li8"]
+size = Vector2(20, 1294)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gj2i1"]
+size = Vector2(767, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4de3i"]
+size = Vector2(721, 20)
+
+[node name="MainGame" type="Node2D" unique_id=465554573]
+script = ExtResource("1_7s6yn")
+
+[node name="BackGround" type="MeshInstance2D" parent="." unique_id=781348842]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(360.25, 640.75)
+scale = Vector2(721.5, 1282.5)
+mesh = SubResource("QuadMesh_2h3om")
+texture = SubResource("CanvasTexture_yhwlx")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=186659515]
+position = Vector2(360, 639)
+
+[node name="Paddle" parent="." unique_id=1646386859 instance=ExtResource("1_b15f2")]
+position = Vector2(369, 1014)
+
+[node name="Balls" type="Node" parent="." unique_id=1157633433]
+
+[node name="Ball" parent="Balls" unique_id=1471434012 instance=ExtResource("1_yhwlx")]
+position = Vector2(360, 639)
+
+[node name="Wall" type="Node2D" parent="." unique_id=1684119506]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Wall" unique_id=1878862217]
+position = Vector2(-10, 0)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/StaticBody2D" unique_id=1524138144]
+position = Vector2(0, 637)
+shape = SubResource("RectangleShape2D_a6li8")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Wall" unique_id=388234800]
+position = Vector2(180, -429)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/StaticBody2D3" unique_id=787726977]
+position = Vector2(177.5, 426)
+shape = SubResource("RectangleShape2D_gj2i1")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Wall" unique_id=1742140634]
+position = Vector2(730, 1)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/StaticBody2D2" unique_id=302822909]
+position = Vector2(0, 637)
+shape = SubResource("RectangleShape2D_a6li8")
+
+[node name="Area2D" type="Area2D" parent="Wall" unique_id=259080836]
+position = Vector2(330, 1226)
+collision_mask = 2
+script = ExtResource("3_4de3i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/Area2D" unique_id=908790590]
+position = Vector2(30.5, 0)
+shape = SubResource("RectangleShape2D_4de3i")
+
+[node name="Bricks" type="Node" parent="." unique_id=1041823292]
+script = ExtResource("3_a6li8")
+brick_scene = ExtResource("4_gj2i1")
+
+[node name="PowerBall" type="Node" parent="." unique_id=1626644122]
+
+[connection signal="area_entered" from="Wall/Area2D" to="Wall/Area2D" method="OnDeathArea2"]
+[connection signal="body_entered" from="Wall/Area2D" to="Wall/Area2D" method="OnDeathArea"]

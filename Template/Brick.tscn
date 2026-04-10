@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://b1vfkefxcsj0f"]
+
+[ext_resource type="Script" uid="uid://djmv6watv57oq" path="res://Scripts/brick.gd" id="1_llpmc"]
+[ext_resource type="PackedScene" uid="uid://dda8h75o00si2" path="res://Template/DoubleBall.tscn" id="2_7v5hh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iiyxi"]
+size = Vector2(50, 20)
+
+[node name="Brick" type="StaticBody2D" unique_id=166600389]
+script = ExtResource("1_llpmc")
+doubleball = ExtResource("2_7v5hh")
+metadata/_edit_horizontal_guides_ = [-10.0]
+metadata/_edit_vertical_guides_ = [-25.0]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=254704387]
+shape = SubResource("RectangleShape2D_iiyxi")
+
+[node name="ColorRect" type="ColorRect" parent="CollisionShape2D" unique_id=214956241]
+offset_left = -24.0
+offset_top = -9.0
+offset_right = 24.0
+offset_bottom = 9.0

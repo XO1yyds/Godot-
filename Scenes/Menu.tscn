@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://b41o3joxdvqp6"]
+
+[ext_resource type="Script" uid="uid://maqu8pwky8m1" path="res://Scripts/menu_control.gd" id="1_3kf3n"]
+[ext_resource type="PackedScene" uid="uid://b1hhfyfbnsjvb" path="res://Scenes/Main_game.tscn" id="2_6pedr"]
+
+[node name="Menu" type="Control" unique_id=1997623911]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3kf3n")
+Main_game = ExtResource("2_6pedr")
+
+[node name="Panel" type="Panel" parent="." unique_id=2089198945]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -247.5
+offset_top = -452.0
+offset_right = 247.5
+offset_bottom = 452.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="Panel" unique_id=2079638556]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -194.0
+offset_top = -297.0
+offset_right = 194.0
+offset_bottom = 297.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Panel/Control" unique_id=290369960]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -210.0
+offset_right = 210.0
+offset_bottom = 158.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "Game again"
+
+[node name="Button2" type="Button" parent="Panel/Control" unique_id=1680069717]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -210.0
+offset_top = -158.0
+offset_right = 210.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = "Game Exit"
+
+[connection signal="button_down" from="Panel/Control/Button" to="." method="GameBegin"]
+[connection signal="button_down" from="Panel/Control/Button2" to="." method="GameExit"]

@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://dda8h75o00si2"]
+
+[ext_resource type="Script" uid="uid://cqg6shhj3wkws" path="res://Scripts/double_ball.gd" id="1_t1uid"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5kfbx"]
+radius = 20.024984
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t1uid"]
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 20
+
+[node name="DoubleBall" type="Area2D" unique_id=2111514500]
+collision_layer = 3
+script = ExtResource("1_t1uid")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=261041821]
+shape = SubResource("CircleShape2D_5kfbx")
+
+[node name="Panel" type="Panel" parent="." unique_id=542633598]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_t1uid")
+
+[node name="Label" type="Label" parent="Panel" unique_id=707375327]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 46.0
+offset_bottom = 44.0
+theme_override_font_sizes/font_size = 22
+text = "X 2"
+
+[connection signal="body_entered" from="." to="." method="OnDoubleBallEnter"]

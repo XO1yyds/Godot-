@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://de2tux3hqc82u"]
+
+[ext_resource type="Script" uid="uid://hiu3nut63uya" path="res://Scripts/ball.gd" id="1_pa1fg"]
+[ext_resource type="Script" uid="uid://b53ew3bvqxjvv" path="res://Scripts/DrawCircle.gd" id="1_v2g0b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pa1fg"]
+
+[node name="Ball" type="CharacterBody2D" unique_id=706011617]
+collision_layer = 2
+script = ExtResource("1_pa1fg")
+BaseVelocity = Vector2(10, 20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1680113311]
+shape = SubResource("CircleShape2D_pa1fg")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=443559097]
+position = Vector2(3.5762787e-07, 3.5762787e-07)
+script = ExtResource("1_v2g0b")
